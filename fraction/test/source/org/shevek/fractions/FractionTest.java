@@ -1,5 +1,6 @@
 package org.shevek.fractions;
 
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
 
@@ -31,4 +32,9 @@ class FractionTest {
         assertThat(fraction.toString()).isEqualTo(fractionAsString);
     }
 
+    @Test
+    void cantHaveZeroAsDenominator() {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Fraction(5, 0));
+        assertThatIllegalArgumentException().isThrownBy(() -> Fraction.forString("3/0"));
+    }
 }
