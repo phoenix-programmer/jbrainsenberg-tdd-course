@@ -1,9 +1,8 @@
 plugins {
-    id 'java'
+    id 'java-library'
 }
 
 sourceSets {
-    main.java.srcDirs = ['production']
-
-    test.java.srcDirs = ['test']
+    main.java.srcDirs = ['production/source']
+    test.java.srcDirs = ['test/source']
 }
