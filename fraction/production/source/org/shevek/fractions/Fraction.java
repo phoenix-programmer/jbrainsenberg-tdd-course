@@ -28,6 +28,10 @@ public class Fraction {
     }
 
     public Fraction add(Fraction other) {
-        return Fraction.forInteger(numerator + other.numerator);
+        return new Fraction(numerator + (other.numerator * denominator), denominator);
+    }
+
+    public Fraction add(int integer) {
+        return add(Fraction.forInteger(integer));
     }
 }

@@ -37,4 +37,11 @@ class FractionTest {
         assertThatIllegalArgumentException().isThrownBy(() -> new Fraction(5, 0));
         assertThatIllegalArgumentException().isThrownBy(() -> Fraction.forString("3/0"));
     }
+
+    @Test
+    void addingIntegerToFractionShouldResultWithSameDenominator() {
+        Fraction fraction = Fraction.forString("4/3");
+
+        assertThat(fraction.add(1).toString()).isEqualTo("7/3");
+    }
 }
