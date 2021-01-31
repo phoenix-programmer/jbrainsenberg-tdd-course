@@ -16,7 +16,7 @@ class FractionTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"2, 3, 5", "4, 3, 7", "3, 0, 3"})
+    @CsvSource({"2, 3, 5", "4, 3, 7", "3, 0, 3", "0, 0, 0"})
     void integerFractionRepresentationAdditionShouldYieldSameResultAsIntegerAddition(int a, int b, int c) {
         final Fraction aAsFraction = Fraction.forInteger(a);
         final Fraction bAsFraction = Fraction.forInteger(b);
