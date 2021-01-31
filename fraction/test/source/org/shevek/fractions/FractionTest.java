@@ -14,4 +14,13 @@ class FractionTest {
         assertThat(integerAsFraction.toString()).isEqualTo(String.format("%d/1", integer));
     }
 
+    @ParameterizedTest
+    @CsvSource({"2, 3, 5", "4, 3, 7", "3, 0, 3"})
+    void integerFractionRepresentationAdditionShouldYieldSameResultAsIntegerAddition(int a, int b, int c) {
+        final Fraction aAsFraction = Fraction.forInteger(a);
+        final Fraction bAsFraction = Fraction.forInteger(b);
+
+        assertThat(aAsFraction.add(bAsFraction).toString()).isEqualTo(String.format("%s/1", c));
+    }
+
 }

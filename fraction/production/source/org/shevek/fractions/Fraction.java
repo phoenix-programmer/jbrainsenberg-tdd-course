@@ -16,4 +16,8 @@ public class Fraction {
     public String toString() {
         return String.format("%d/%d", numerator, 1);
     }
+
+    public Fraction add(Fraction other) {
+        return Fraction.forInteger(numerator + other.numerator);
+    }
 }
