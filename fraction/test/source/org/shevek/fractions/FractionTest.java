@@ -23,4 +23,12 @@ class FractionTest {
         assertThat(aAsFraction.add(bAsFraction).toString()).isEqualTo(String.format("%s/1", c));
     }
 
+    @ParameterizedTest
+    @CsvSource({"1/2", "2/3", "5/3"})
+    void stringFactoryMethodTest(String fractionAsString) {
+        Fraction fraction = Fraction.forString(fractionAsString);
+
+        assertThat(fraction.toString()).isEqualTo(fractionAsString);
+    }
+
 }
