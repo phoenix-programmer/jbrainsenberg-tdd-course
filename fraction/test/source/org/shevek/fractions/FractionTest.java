@@ -34,8 +34,8 @@ class FractionTest {
 
     @Test
     void cantHaveZeroAsDenominator() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Fraction(5, 0));
-        assertThatIllegalArgumentException().isThrownBy(() -> Fraction.forString("3/0"));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Fraction(5, 0)).withMessage("0 isn't a valid denominator");
+        assertThatIllegalArgumentException().isThrownBy(() -> Fraction.forString("3/0")).withMessage("0 isn't a valid denominator");
     }
 
     @Test
