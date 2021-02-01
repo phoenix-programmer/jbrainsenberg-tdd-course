@@ -1,7 +1,9 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
 }
 
+group = 'org.shevek.fractions'
 version = '0.1.0'
 
 sourceSets {

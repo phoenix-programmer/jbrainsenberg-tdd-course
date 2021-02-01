@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'jbrainsenberg-tdd-course'
-include 'fraction'
+include 'fractions'
