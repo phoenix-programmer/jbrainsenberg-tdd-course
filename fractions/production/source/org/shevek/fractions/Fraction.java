@@ -19,7 +19,11 @@ public class Fraction {
 
     public static Fraction forString(String fractionAsString) {
         final String[] parts = fractionAsString.split("/");
-        return new Fraction(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
+        if (parts.length == 2) {
+            return new Fraction(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
+        } else {
+            return Fraction.forInteger(Integer.parseInt(parts[0]));
+        }
     }
 
     @Override
