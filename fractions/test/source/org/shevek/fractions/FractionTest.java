@@ -38,6 +38,12 @@ class FractionTest {
         assertThat(Fraction.forString(integerAsString).toString()).isEqualTo(expectedResult);
     }
 
+    @ParameterizedTest
+    @CsvSource({"A", "1/2/3", "1/A"})
+    void stringFactoryMethodShouldNotAcceptInvalidInput(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> Fraction.forString(input));
+    }
+
     @Test
     void cantHaveZeroAsDenominator() {
         assertThatIllegalArgumentException().isThrownBy(() -> new Fraction(5, 0)).withMessage("0 isn't a valid denominator");

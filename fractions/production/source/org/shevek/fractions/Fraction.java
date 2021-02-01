@@ -21,9 +21,10 @@ public class Fraction {
         final String[] parts = fractionAsString.split("/");
         if (parts.length == 2) {
             return new Fraction(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
-        } else {
+        } else if (parts.length == 1){
             return Fraction.forInteger(Integer.parseInt(parts[0]));
         }
+        throw new IllegalArgumentException();
     }
 
     @Override
