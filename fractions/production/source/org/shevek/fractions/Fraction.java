@@ -33,7 +33,7 @@ public class Fraction {
     }
 
     public Fraction add(Fraction other) {
-        return new Fraction(numerator + (other.numerator * denominator), denominator);
+        return new Fraction(numerator + (other.numerator * (denominator / other.denominator)), denominator);
     }
 
     public Fraction add(int integer) {

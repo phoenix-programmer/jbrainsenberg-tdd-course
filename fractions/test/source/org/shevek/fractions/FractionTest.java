@@ -56,4 +56,10 @@ class FractionTest {
 
         assertThat(fraction.add(1).toString()).isEqualTo("7/3");
     }
+
+    @Test
+    void addingTwoFractionsWithSameDenominatorShouldntChangeIt() {
+        Fraction fraction = new Fraction(1, 5);
+        assertThat(fraction.add(new Fraction(1, 5)).toString()).isEqualTo("2/5");
+    }
 }
