@@ -17,11 +17,10 @@ public class Fraction {
         }
         if (numerator < 0 && denominator < 0) {
             this.numerator = abs(numerator);
-            this.denominator = abs(denominator);
         } else {
-            this.numerator = numerator * denominator < 0 ? -1 : 1;
-            this.denominator = abs(denominator);
+            this.numerator = numerator * (denominator < 0 ? -1 : 1);
         }
+        this.denominator = abs(denominator);
     }
 
     public static Fraction zero() {

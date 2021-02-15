@@ -16,7 +16,7 @@ public class FractionCreationAndRepresentationTests {
     }
 
     @ParameterizedTest(name = "string factory method should deal with integers")
-    @CsvSource({"1, 1/1", "2, 2/1"})
+    @CsvSource({"1, 1/1", "2, 2/1", "-1, -1/1"})
     void stringFactoryMethodShouldDealWithIntegers(String integerAsString, String expectedResult) {
         assertThat(Fraction.forString(integerAsString)).isEqualTo(Fraction.forString(expectedResult));
     }
