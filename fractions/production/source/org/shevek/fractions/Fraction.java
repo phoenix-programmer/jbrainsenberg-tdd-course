@@ -9,8 +9,13 @@ public class Fraction {
         if (denominator == 0) {
             throw new IllegalArgumentException("0 isn't a valid denominator");
         }
-        this.numerator = numerator;
-        this.denominator = denominator;
+        if (numerator < 0 && denominator < 0) {
+            this.numerator = Math.abs(numerator);
+            this.denominator = Math.abs(denominator);
+        } else {
+            this.numerator = numerator;
+            this.denominator = denominator;
+        }
     }
 
     public static Fraction forInteger(int integer) {
@@ -29,7 +34,7 @@ public class Fraction {
 
     @Override
     public String toString() {
-        int gcd = greatestCommonDenominator(numerator, denominator);
+        int gcd = Math.abs(greatestCommonDenominator(numerator, denominator));
         return String.format("%d/%d", numerator / gcd, denominator / gcd);
     }
 

@@ -49,4 +49,17 @@ public class FractionCreationAndRepresentationTests {
         assertThat(fraction.toString()).isEqualTo("1/2");
     }
 
+    @Test
+    @DisplayName("fraction creation with negative numerator and denominator should result in a positive one")
+    void fractionCreationWithNegativeNumeratorAndDenominatorShouldResultInAPositiveOne() {
+        Fraction fraction = Fraction.forString("-1/-2");
+        assertThat(fraction.toString()).isEqualTo("1/2");
+    }
+
+    @Test
+    @DisplayName("fraction creation with negative numerator should be negative")
+    void fractionCreationWithNegativeNumeratorShouldBeNegative() {
+        Fraction fraction = Fraction.forString("-1/3");
+        assertThat(fraction.toString()).isEqualTo("-1/3");
+    }
 }
