@@ -27,7 +27,7 @@ public class Fraction {
         return ZERO;
     }
 
-    public static Fraction of(int numerator, int denominator) {
+    public static Fraction fraction(int numerator, int denominator) {
         if (numerator == 0) {
             return ZERO;
         }
@@ -52,7 +52,7 @@ public class Fraction {
     }
 
     public Fraction negated() {
-        return Fraction.of(-1 * numerator, denominator);
+        return Fraction.fraction(-1 * numerator, denominator);
     }
 
     public Fraction add(Fraction other) {
@@ -61,7 +61,7 @@ public class Fraction {
         } else if (other == ZERO) {
             return this;
         }
-        return Fraction.of(numerator + (other.numerator * (denominator / other.denominator)), denominator);
+        return Fraction.fraction(numerator + (other.numerator * (denominator / other.denominator)), denominator);
     }
 
     public Fraction add(int integer) {
@@ -77,7 +77,7 @@ public class Fraction {
     }
 
     public Fraction multiply(Fraction fraction) {
-        return Fraction.of(numerator * fraction.numerator, denominator * fraction.denominator);
+        return Fraction.fraction(numerator * fraction.numerator, denominator * fraction.denominator);
     }
 
     public Fraction multiply(int number) {
@@ -88,7 +88,7 @@ public class Fraction {
         if (fraction == ZERO) {
             throw new IllegalArgumentException("Division by zero is not allowed");
         }
-        return Fraction.of(numerator * fraction.denominator, denominator * fraction.numerator);
+        return Fraction.fraction(numerator * fraction.denominator, denominator * fraction.numerator);
     }
 
     public Fraction divide(int number) {

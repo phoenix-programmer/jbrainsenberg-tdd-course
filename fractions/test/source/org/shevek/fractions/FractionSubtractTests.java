@@ -3,7 +3,7 @@ package org.shevek.fractions;
 import org.junit.jupiter.api.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.shevek.fractions.Fraction.zero;
+import static org.shevek.fractions.Fraction.*;
 
 public class FractionSubtractTests {
 
@@ -16,13 +16,13 @@ public class FractionSubtractTests {
     @Test
     @DisplayName("should allow subtract integer to a fraction")
     void shouldAllowSubtractIntegerToFraction() {
-        assertThat(Fraction.of(2, 5).subtract(1)).isEqualTo(Fraction.of(-3, 5));
+        assertThat(fraction(2, 5).subtract(1)).isEqualTo(fraction(-3, 5));
     }
 
     @Test
     @DisplayName("subtractShouldReturnZeroWhenAppropiate")
     void subtractShouldReturnZeroWhenAppropiate() {
-        final Fraction fraction = Fraction.of(2, 5);
+        final Fraction fraction = fraction(2, 5);
         assertThat(fraction.subtract(fraction)).isSameAs(zero());
 
     }

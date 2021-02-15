@@ -5,7 +5,7 @@ import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.shevek.fractions.Fraction.zero;
+import static org.shevek.fractions.Fraction.*;
 
 class FractionAddTest {
 
@@ -22,14 +22,14 @@ class FractionAddTest {
     @DisplayName("adding Integer to Fraction should result with same denominator")
     void addingIntegerToFractionShouldResultWithSameDenominator() {
         Fraction fraction = Fraction.forString("4/3");
-        assertThat(fraction.add(1)).isEqualTo(Fraction.of(7, 3));
+        assertThat(fraction.add(1)).isEqualTo(fraction(7, 3));
     }
 
     @Test
     @DisplayName("should keep same denominator when adding two fractions with the same denominator")
     void addingTwoFractionsWithSameDenominatorShouldntChangeIt() {
-        Fraction fraction = Fraction.of(1, 5);
-        assertThat(fraction.add(Fraction.of(1, 5))).isEqualTo(Fraction.of(2, 5));
+        Fraction fraction = fraction(1, 5);
+        assertThat(fraction.add(fraction(1, 5))).isEqualTo(fraction(2, 5));
     }
 
     @Test

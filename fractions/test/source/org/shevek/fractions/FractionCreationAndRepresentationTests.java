@@ -5,13 +5,14 @@ import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.shevek.fractions.Fraction.fraction;
 
 public class FractionCreationAndRepresentationTests {
 
     @Test
     @DisplayName("Fractions can't have 0 as denominator")
     void cantHaveZeroAsDenominator() {
-        assertThatIllegalArgumentException().isThrownBy(() -> Fraction.of(5, 0)).withMessage("0 isn't a valid denominator");
+        assertThatIllegalArgumentException().isThrownBy(() -> fraction(5, 0)).withMessage("0 isn't a valid denominator");
         assertThatIllegalArgumentException().isThrownBy(() -> Fraction.forString("3/0")).withMessage("0 isn't a valid denominator");
     }
 
@@ -53,7 +54,7 @@ public class FractionCreationAndRepresentationTests {
     @DisplayName("fraction creation with negative numerator and denominator should result in a positive one")
     void fractionCreationWithNegativeNumeratorAndDenominatorShouldResultInAPositiveOne() {
         Fraction fraction = Fraction.forString("-1/-2");
-        assertThat(fraction).isEqualTo(Fraction.of(1, 2));
+        assertThat(fraction).isEqualTo(fraction(1, 2));
     }
 
     @Test
@@ -65,13 +66,13 @@ public class FractionCreationAndRepresentationTests {
     @Test
     @DisplayName("creation of negative fractions from either numerator or denominator")
     void creationOfNegativeFractionsFromEitherNumeratorOrDenominator() {
-        assertThat(Fraction.of(-1, 3)).isEqualTo(Fraction.of(1, -3));
+        assertThat(fraction(-1, 3)).isEqualTo(fraction(1, -3));
     }
 
     @Test
     @DisplayName("negatingFractionsShouldBeAllowed")
     void negatingFractionsShouldBeAllowed() {
-        assertThat(Fraction.of(2, 5).negated()).isEqualTo(Fraction.of(-2, 5));
-        assertThat(Fraction.of(-3, 4).negated()).isEqualTo(Fraction.of(3, 4));
+        assertThat(fraction(2, 5).negated()).isEqualTo(fraction(-2, 5));
+        assertThat(fraction(-3, 4).negated()).isEqualTo(fraction(3, 4));
     }
 }
