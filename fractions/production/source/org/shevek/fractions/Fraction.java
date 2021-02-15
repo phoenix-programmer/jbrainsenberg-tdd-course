@@ -84,6 +84,13 @@ public class Fraction {
         return multiply(Fraction.forInteger(number));
     }
 
+    public Fraction divide(Fraction fraction) {
+        if (fraction == ZERO) {
+            throw new IllegalArgumentException("Division by zero is not allowed");
+        }
+        return ZERO;
+    }
+
     @Override
     public String toString() {
         if (numerator == 0) {

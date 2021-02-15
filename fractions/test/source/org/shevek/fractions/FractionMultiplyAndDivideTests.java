@@ -2,7 +2,7 @@ package org.shevek.fractions;
 
 import org.junit.jupiter.api.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 import static org.shevek.fractions.Fraction.zero;
 
 public class FractionMultiplyAndDivideTests {
@@ -23,5 +23,11 @@ public class FractionMultiplyAndDivideTests {
     @DisplayName("fractionMultiplicationIsStraightForward")
     void fractionMultiplicationIsStraightForward() {
         assertThat(Fraction.of(2,5).multiply(Fraction.of(1, 3))).isEqualTo(Fraction.of(2, 15));
+    }
+
+    @Test
+    @DisplayName("Division by zero is not allowed")
+    void divisionByZeroIsNotAllowed() {
+        assertThatIllegalArgumentException().isThrownBy(() -> Fraction.of(2, 3).divide(Fraction.zero()));
     }
 }
