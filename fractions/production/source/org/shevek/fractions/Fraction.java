@@ -2,6 +2,7 @@ package org.shevek.fractions;
 
 public class Fraction {
 
+    private static final String ZERO_AS_STRING = "0";
     private final int numerator;
     private final int denominator;
 
@@ -34,6 +35,9 @@ public class Fraction {
 
     @Override
     public String toString() {
+        if (numerator == 0) {
+            return ZERO_AS_STRING;
+        }
         int gcd = Math.abs(greatestCommonDenominator(numerator, denominator));
         return String.format("%d/%d", numerator / gcd, denominator / gcd);
     }

@@ -28,7 +28,7 @@ public class FractionCreationAndRepresentationTests {
     }
 
     @ParameterizedTest(name = "should have denominator equals to one for integers - {1}")
-    @CsvSource({"0", "1", "2", "-3"})
+    @CsvSource({"1", "2", "-3"})
     void integersWhenRepresentedAsFractionShouldHaveDenominatorEqualToOne(int integer) {
         final Fraction integerAsFraction = Fraction.forInteger(integer);
         assertThat(integerAsFraction.toString()).isEqualTo(String.format("%d/1", integer));
@@ -61,5 +61,12 @@ public class FractionCreationAndRepresentationTests {
     void fractionCreationWithNegativeNumeratorShouldBeNegative() {
         Fraction fraction = Fraction.forString("-1/3");
         assertThat(fraction.toString()).isEqualTo("-1/3");
+    }
+
+    @Test
+    @DisplayName("should accept zero as valid fraction")
+    void shouldAcceptZeroAsValidFraction() {
+        final Fraction fraction = Fraction.forInteger(0);
+        assertThat(fraction.toString()).isEqualTo("0");
     }
 }
