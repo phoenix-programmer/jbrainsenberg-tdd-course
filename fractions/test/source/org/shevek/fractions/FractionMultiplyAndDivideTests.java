@@ -18,4 +18,10 @@ public class FractionMultiplyAndDivideTests {
     void anyFractionMultipliedByZeroShouldBeZero() {
         assertThat(Fraction.of(2, 3).multiply(0)).isEqualTo(zero());
     }
+
+    @Test
+    @DisplayName("fractionMultiplicationIsStraightForward")
+    void fractionMultiplicationIsStraightForward() {
+        assertThat(Fraction.of(2,5).multiply(Fraction.of(1, 3))).isEqualTo(Fraction.of(2, 15));
+    }
 }
