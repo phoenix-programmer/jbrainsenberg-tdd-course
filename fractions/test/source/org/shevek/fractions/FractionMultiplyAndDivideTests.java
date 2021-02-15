@@ -28,6 +28,12 @@ public class FractionMultiplyAndDivideTests {
     @Test
     @DisplayName("Division by zero is not allowed")
     void divisionByZeroIsNotAllowed() {
-        assertThatIllegalArgumentException().isThrownBy(() -> Fraction.of(2, 3).divide(Fraction.zero()));
+        assertThatIllegalArgumentException().isThrownBy(() -> Fraction.of(2, 3).divide(zero()));
+    }
+
+    @Test
+    @DisplayName("zeroDividedByAnyFractionShouldYieldZero")
+    void zeroDividedByAnyFractionShouldYieldZero() {
+        assertThat(zero().divide(Fraction.of(5, 8))).isSameAs(zero());
     }
 }
