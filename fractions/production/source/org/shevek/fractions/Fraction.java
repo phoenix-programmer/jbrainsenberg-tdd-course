@@ -76,6 +76,10 @@ public class Fraction {
         return subtract(Fraction.forInteger(number));
     }
 
+    public Fraction multiply(Fraction fraction) {
+        return ZERO;
+    }
+
     @Override
     public String toString() {
         if (numerator == 0) {
