@@ -34,8 +34,13 @@ class FractionAddTest {
     @Test
     @DisplayName("adding zero to zero should result zero")
     void addingZeroToZeroShouldResultZero() {
-        final Fraction a = Fraction.forInteger(0);
-        final Fraction b = Fraction.forInteger(0);
-        assertThat(a.add(b).toString()).isEqualTo("0");
+        assertThat(Fraction.zero().add(Fraction.zero()).toString()).isEqualTo("0");
     }
+
+    @ParameterizedTest(name = "addition should handle negative fractions")
+    @CsvSource({"0, -1/3, -1/3", "-1/3, -1/3, -2/3", "-1/3, 1/3, 0"})
+    void additionShouldHandleNegativeFractions(String a, String b, String c) {
+        assertThat(Fraction.forString(a).add(Fraction.forString(b)).toString()).isEqualTo(c);
+    }
+
 }

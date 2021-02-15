@@ -20,6 +20,10 @@ public class Fraction {
         }
     }
 
+    public static Fraction zero() {
+        return ZERO;
+    }
+
     public static Fraction of(int numerator, int denominator) {
         if (numerator == 0) {
             return ZERO;
