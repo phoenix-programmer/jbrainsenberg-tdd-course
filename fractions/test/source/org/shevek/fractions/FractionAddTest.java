@@ -27,9 +27,15 @@ class FractionAddTest {
     @Test
     @DisplayName("should keep same denominator when adding two fractions with the same denominator")
     void addingTwoFractionsWithSameDenominatorShouldntChangeIt() {
-        Fraction fraction = new Fraction(1, 5);
-        assertThat(fraction.add(new Fraction(1, 5)).toString()).isEqualTo("2/5");
+        Fraction fraction = Fraction.of(1, 5);
+        assertThat(fraction.add(Fraction.of(1, 5)).toString()).isEqualTo("2/5");
     }
 
-
+    @Test
+    @DisplayName("adding zero to zero should result zero")
+    void addingZeroToZeroShouldResultZero() {
+        final Fraction a = Fraction.forInteger(0);
+        final Fraction b = Fraction.forInteger(0);
+        assertThat(a.add(b).toString()).isEqualTo("0");
+    }
 }

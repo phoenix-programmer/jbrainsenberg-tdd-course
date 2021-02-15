@@ -11,7 +11,7 @@ public class FractionCreationAndRepresentationTests {
     @Test
     @DisplayName("Fractions can't have 0 as denominator")
     void cantHaveZeroAsDenominator() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Fraction(5, 0)).withMessage("0 isn't a valid denominator");
+        assertThatIllegalArgumentException().isThrownBy(() -> Fraction.of(5, 0)).withMessage("0 isn't a valid denominator");
         assertThatIllegalArgumentException().isThrownBy(() -> Fraction.forString("3/0")).withMessage("0 isn't a valid denominator");
     }
 
