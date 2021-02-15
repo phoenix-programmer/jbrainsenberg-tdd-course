@@ -61,4 +61,10 @@ public class FractionCreationAndRepresentationTests {
     void shouldAcceptZeroAsValidFraction() {
         assertThatNoException().isThrownBy(() -> Fraction.forInteger(0));
     }
+
+    @Test
+    @DisplayName("creation of negative fractions from either numerator or denominator")
+    void creationOfNegativeFractionsFromEitherNumeratorOrDenominator() {
+        assertThat(Fraction.of(-1, 3)).isEqualTo(Fraction.of(1, -3));
+    }
 }

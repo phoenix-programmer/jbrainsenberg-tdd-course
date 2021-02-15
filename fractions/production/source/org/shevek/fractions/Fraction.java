@@ -2,6 +2,8 @@ package org.shevek.fractions;
 
 import java.util.*;
 
+import static java.lang.Math.abs;
+
 public class Fraction {
 
     private static final String ZERO_AS_STRING = "0";
@@ -14,11 +16,11 @@ public class Fraction {
             throw new IllegalArgumentException("0 isn't a valid denominator");
         }
         if (numerator < 0 && denominator < 0) {
-            this.numerator = Math.abs(numerator);
-            this.denominator = Math.abs(denominator);
+            this.numerator = abs(numerator);
+            this.denominator = abs(denominator);
         } else {
-            this.numerator = numerator;
-            this.denominator = denominator;
+            this.numerator = numerator * denominator < 0 ? -1 : 1;
+            this.denominator = abs(denominator);
         }
     }
 
@@ -50,19 +52,6 @@ public class Fraction {
         throw new IllegalArgumentException();
     }
 
-    @Override
-    public String toString() {
-        if (numerator == 0) {
-            return ZERO_AS_STRING;
-        }
-        int gcd = Math.abs(greatestCommonDenominator(numerator, denominator));
-        return String.format("%d/%d", numerator / gcd, denominator / gcd);
-    }
-
-    private int greatestCommonDenominator(int numberA, int numberB) {
-        return numberB == 0 ? numberA : greatestCommonDenominator(numberB, numberA % numberB);
-    }
-
     public Fraction add(Fraction other) {
         if (this == ZERO) {
             return other;
@@ -70,6 +59,23 @@ public class Fraction {
             return this;
         }
         return Fraction.of(numerator + (other.numerator * (denominator / other.denominator)), denominator);
+    }
+
+    public Fraction add(int integer) {
+        return add(Fraction.forInteger(integer));
+    }
+
+    @Override
+    public String toString() {
+        if (numerator == 0) {
+            return ZERO_AS_STRING;
+        }
+        int gcd = abs(greatestCommonDenominator(numerator, denominator));
+        return String.format("%d/%d", numerator / gcd, denominator / gcd);
+    }
+
+    private int greatestCommonDenominator(int numberA, int numberB) {
+        return numberB == 0 ? numberA : greatestCommonDenominator(numberB, numberA % numberB);
     }
 
     @Override
@@ -85,9 +91,5 @@ public class Fraction {
     @Override
     public int hashCode() {
         return Objects.hash(numerator, denominator);
-    }
-
-    public Fraction add(int integer) {
-        return add(Fraction.forInteger(integer));
     }
 }
