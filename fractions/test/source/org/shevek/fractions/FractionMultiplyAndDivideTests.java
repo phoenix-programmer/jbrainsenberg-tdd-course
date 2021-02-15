@@ -36,4 +36,17 @@ public class FractionMultiplyAndDivideTests {
     void zeroDividedByAnyFractionShouldYieldZero() {
         assertThat(zero().divide(Fraction.of(5, 8))).isSameAs(zero());
     }
+
+    @Test
+    @DisplayName("division by one should yield same fraction")
+    void divisionByOneShouldYieldSameFraction() {
+        final Fraction fraction = Fraction.of(2, 5);
+        assertThat(fraction.divide(1)).isSameAs(fraction);
+    }
+
+    @Test
+    @DisplayName("division by integer should yield appropiate result")
+    void divisionByIntegerShouldYieldAppropiateResult() {
+        assertThat(Fraction.of(2, 3).divide(2)).isEqualTo(Fraction.of(2, 6));
+    }
 }

@@ -88,7 +88,14 @@ public class Fraction {
         if (fraction == ZERO) {
             throw new IllegalArgumentException("Division by zero is not allowed");
         }
-        return ZERO;
+        return Fraction.of(numerator * fraction.denominator, denominator * fraction.numerator);
+    }
+
+    public Fraction divide(int number) {
+        if (number == 1) {
+            return this;
+        }
+        return divide(Fraction.forInteger(number));
     }
 
     @Override
