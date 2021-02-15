@@ -80,6 +80,10 @@ public class Fraction {
         return ZERO;
     }
 
+    public Fraction multiply(int number) {
+        return multiply(Fraction.forInteger(number));
+    }
+
     @Override
     public String toString() {
         if (numerator == 0) {

@@ -12,4 +12,10 @@ public class FractionMultiplyAndDivideTests {
     void zeroMultipliedByAnyFractionShouldBeZero() {
         assertThat(zero().multiply(Fraction.of(2, 5))).isEqualTo(zero());
     }
+
+    @Test
+    @DisplayName("any fraction multiplied by 0 should yield 0")
+    void anyFractionMultipliedByZeroShouldBeZero() {
+        assertThat(Fraction.of(2, 3).multiply(0)).isEqualTo(zero());
+    }
 }
