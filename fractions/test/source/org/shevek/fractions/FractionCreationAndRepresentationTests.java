@@ -67,4 +67,11 @@ public class FractionCreationAndRepresentationTests {
     void creationOfNegativeFractionsFromEitherNumeratorOrDenominator() {
         assertThat(Fraction.of(-1, 3)).isEqualTo(Fraction.of(1, -3));
     }
+
+    @Test
+    @DisplayName("negatingFractionsShouldBeAllowed")
+    void negatingFractionsShouldBeAllowed() {
+        assertThat(Fraction.of(2, 5).negated()).isEqualTo(Fraction.of(-2, 5));
+        assertThat(Fraction.of(-3, 4).negated()).isEqualTo(Fraction.of(3, 4));
+    }
 }

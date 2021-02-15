@@ -51,6 +51,10 @@ public class Fraction {
         throw new IllegalArgumentException();
     }
 
+    public Fraction negated() {
+        return Fraction.of(-1 * numerator, denominator);
+    }
+
     public Fraction add(Fraction other) {
         if (this == ZERO) {
             return other;
@@ -62,6 +66,14 @@ public class Fraction {
 
     public Fraction add(int integer) {
         return add(Fraction.forInteger(integer));
+    }
+
+    public Fraction subtract(Fraction fraction) {
+        return add(fraction.negated());
+    }
+
+    public Fraction subtract(int number) {
+        return subtract(Fraction.forInteger(number));
     }
 
     @Override
