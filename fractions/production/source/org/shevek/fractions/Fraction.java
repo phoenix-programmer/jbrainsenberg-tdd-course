@@ -98,13 +98,24 @@ public class Fraction {
         return divide(Fraction.forInteger(number));
     }
 
+    public Fraction simplify() {
+        if (this == ZERO) {
+            return ZERO;
+        }
+        int gcd = abs(greatestCommonDenominator(numerator, denominator));
+        if (gcd == 1) {
+            return this;
+        }
+        return fraction(numerator / gcd, denominator / gcd);
+    }
+
     @Override
     public String toString() {
         if (numerator == 0) {
             return ZERO_AS_STRING;
         }
-        int gcd = abs(greatestCommonDenominator(numerator, denominator));
-        return String.format("%d/%d", numerator / gcd, denominator / gcd);
+        Fraction fraction = simplify();
+        return String.format("%d/%d", fraction.numerator, fraction.denominator);
     }
 
     private int greatestCommonDenominator(int numberA, int numberB) {
@@ -117,8 +128,9 @@ public class Fraction {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        Fraction fraction = (Fraction) o;
-        return numerator == fraction.numerator && denominator == fraction.denominator;
+        Fraction fraction = ((Fraction) o).simplify();
+        Fraction thisSimplified = simplify();
+        return thisSimplified.numerator == fraction.numerator && thisSimplified.denominator == fraction.denominator;
     }
 
     @Override

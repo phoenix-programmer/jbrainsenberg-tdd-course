@@ -75,4 +75,17 @@ public class FractionCreationAndRepresentationTests {
         assertThat(fraction(2, 5).negated()).isEqualTo(fraction(-2, 5));
         assertThat(fraction(-3, 4).negated()).isEqualTo(fraction(3, 4));
     }
+
+    @Test
+    @DisplayName("simplified fraction should be equal to the same non simplified fraction")
+    void simplifiedFractionShouldBeEqualToTheSameNonSimplifiedFraction() {
+        assertThat(fraction(1, 2)).isEqualTo(fraction(2, 4));
+    }
+
+    @Test
+    @DisplayName("Unsimplifyable fraction should yield same fraction when tried to simplify")
+    void unsimplifyableFractionShouldYieldSameFractionWhenTriedToSimplify() {
+        final Fraction fraction = fraction(1, 3);
+        assertThat(fraction).isSameAs(fraction);
+    }
 }
