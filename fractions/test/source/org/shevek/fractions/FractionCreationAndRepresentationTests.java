@@ -18,7 +18,7 @@ public class FractionCreationAndRepresentationTests {
     @ParameterizedTest(name = "string factory method should deal with integers")
     @CsvSource({"1, 1/1", "2, 2/1"})
     void stringFactoryMethodShouldDealWithIntegers(String integerAsString, String expectedResult) {
-        assertThat(Fraction.forString(integerAsString).toString()).isEqualTo(expectedResult);
+        assertThat(Fraction.forString(integerAsString)).isEqualTo(Fraction.forString(expectedResult));
     }
 
     @ParameterizedTest(name = "string factory method should not accept invalid input")
@@ -53,20 +53,12 @@ public class FractionCreationAndRepresentationTests {
     @DisplayName("fraction creation with negative numerator and denominator should result in a positive one")
     void fractionCreationWithNegativeNumeratorAndDenominatorShouldResultInAPositiveOne() {
         Fraction fraction = Fraction.forString("-1/-2");
-        assertThat(fraction.toString()).isEqualTo("1/2");
-    }
-
-    @Test
-    @DisplayName("fraction creation with negative numerator should be negative")
-    void fractionCreationWithNegativeNumeratorShouldBeNegative() {
-        Fraction fraction = Fraction.forString("-1/3");
-        assertThat(fraction.toString()).isEqualTo("-1/3");
+        assertThat(fraction).isEqualTo(Fraction.of(1, 2));
     }
 
     @Test
     @DisplayName("should accept zero as valid fraction")
     void shouldAcceptZeroAsValidFraction() {
-        final Fraction fraction = Fraction.forInteger(0);
-        assertThat(fraction.toString()).isEqualTo("0");
+        assertThatNoException().isThrownBy(() -> Fraction.forInteger(0));
     }
 }

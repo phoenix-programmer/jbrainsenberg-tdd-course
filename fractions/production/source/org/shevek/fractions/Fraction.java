@@ -1,5 +1,7 @@
 package org.shevek.fractions;
 
+import java.util.*;
+
 public class Fraction {
 
     private static final String ZERO_AS_STRING = "0";
@@ -67,7 +69,22 @@ public class Fraction {
         } else if (other == ZERO) {
             return this;
         }
-        return new Fraction(numerator + (other.numerator * (denominator / other.denominator)), denominator);
+        return Fraction.of(numerator + (other.numerator * (denominator / other.denominator)), denominator);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Fraction fraction = (Fraction) o;
+        return numerator == fraction.numerator && denominator == fraction.denominator;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numerator, denominator);
     }
 
     public Fraction add(int integer) {
