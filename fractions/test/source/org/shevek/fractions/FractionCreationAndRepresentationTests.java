@@ -32,14 +32,13 @@ public class FractionCreationAndRepresentationTests {
     @CsvSource({"1", "2", "-3"})
     void integersWhenRepresentedAsFractionShouldHaveDenominatorEqualToOne(int integer) {
         final Fraction integerAsFraction = Fraction.forInteger(integer);
-        assertThat(integerAsFraction.toString()).isEqualTo(String.format("%d/1", integer));
+        assertThat(integerAsFraction).isEqualTo(fraction(integer, 1));
     }
 
     @ParameterizedTest(name = "should use improper notation when representing fraction as string: {0}")
     @CsvSource({"7/5", "11/4", "5/3"})
     void shouldUseImproperNotation(String fractionAsString) {
         Fraction fraction = Fraction.forString(fractionAsString);
-
         assertThat(fraction.toString()).isEqualTo(fractionAsString);
     }
 
@@ -86,6 +85,6 @@ public class FractionCreationAndRepresentationTests {
     @DisplayName("Unsimplifyable fraction should yield same fraction when tried to simplify")
     void unsimplifyableFractionShouldYieldSameFractionWhenTriedToSimplify() {
         final Fraction fraction = fraction(1, 3);
-        assertThat(fraction).isSameAs(fraction);
+        assertThat(fraction.simplify()).isSameAs(fraction);
     }
 }
