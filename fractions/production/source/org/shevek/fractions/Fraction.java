@@ -35,9 +35,6 @@ public class Fraction {
     }
 
     public static Fraction forInteger(int integer) {
-        if (integer == 0) {
-            return ZERO;
-        }
         return new Fraction(integer, 1);
     }
 
