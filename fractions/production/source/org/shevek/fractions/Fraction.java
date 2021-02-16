@@ -7,12 +7,12 @@ import static java.lang.Math.abs;
 public class Fraction {
 
     private static final String ZERO_AS_STRING = "0";
-    private static final Fraction ZERO = new Fraction(0, 0);
+    private static final Fraction ZERO = new Fraction(0, 1);
     private final int numerator;
     private final int denominator;
 
     private Fraction(int numerator, int denominator) {
-        if (denominator == 0 && numerator != 0) {
+        if (denominator == 0) {
             throw new IllegalArgumentException("0 isn't a valid denominator");
         }
         if (numerator < 0 && denominator < 0) {
@@ -35,6 +35,9 @@ public class Fraction {
     }
 
     public static Fraction forInteger(int integer) {
+        if (integer == 0) {
+            return ZERO;
+        }
         return new Fraction(integer, 1);
     }
 

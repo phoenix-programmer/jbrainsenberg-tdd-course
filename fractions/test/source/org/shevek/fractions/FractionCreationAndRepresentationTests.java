@@ -14,21 +14,22 @@ public class FractionCreationAndRepresentationTests {
     void cantHaveZeroAsDenominator() {
         assertThatIllegalArgumentException().isThrownBy(() -> fraction(5, 0)).withMessage("0 isn't a valid denominator");
         assertThatIllegalArgumentException().isThrownBy(() -> Fraction.forString("3/0")).withMessage("0 isn't a valid denominator");
+        assertThatIllegalArgumentException().isThrownBy(() -> Fraction.forString("0/0")).withMessage("0 isn't a valid denominator");
     }
 
-    @ParameterizedTest(name = "string factory method should deal with integers")
+    @ParameterizedTest(name = "string factory method should deal with integers: {0} = {1}")
     @CsvSource({"1, 1/1", "2, 2/1", "-1, -1/1"})
     void stringFactoryMethodShouldDealWithIntegers(String integerAsString, String expectedResult) {
         assertThat(Fraction.forString(integerAsString)).isEqualTo(Fraction.forString(expectedResult));
     }
 
-    @ParameterizedTest(name = "string factory method should not accept invalid input")
+    @ParameterizedTest(name = "string factory method should not accept invalid input: {0}")
     @CsvSource({"A", "1/2/3", "1/A"})
     void stringFactoryMethodShouldNotAcceptInvalidInput(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> Fraction.forString(input));
     }
 
-    @ParameterizedTest(name = "should have denominator equals to one for integers - {1}")
+    @ParameterizedTest(name = "should have denominator equals to one for integers: {0}")
     @CsvSource({"1", "2", "-3"})
     void integersWhenRepresentedAsFractionShouldHaveDenominatorEqualToOne(int integer) {
         final Fraction integerAsFraction = Fraction.forInteger(integer);
