@@ -49,4 +49,10 @@ public class FractionMultiplyAndDivideTests {
     void divisionByIntegerShouldYieldAppropiateResult() {
         assertThat(fraction(2, 3).divide(2)).isEqualTo(fraction(2, 6));
     }
+
+    @Test
+    @DisplayName("dividing fractions should yield same result as multiplying by dividend's inverse")
+    void dividingFractionsShouldBeEqualToMultiplyByInverseOfDividend() {
+        assertThat(fraction(2, 5).divide(fraction(3, 8))).isEqualTo(fraction(2, 5).multiply(fraction(8, 3)));
+    }
 }
