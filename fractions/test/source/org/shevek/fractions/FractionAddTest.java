@@ -1,7 +1,9 @@
 package org.shevek.fractions;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
 import org.junit.jupiter.params.*;
+import org.junit.jupiter.params.converter.*;
 import org.junit.jupiter.params.provider.*;
 
 import static org.assertj.core.api.Assertions.*;
@@ -44,4 +46,20 @@ class FractionAddTest {
         assertThat(Fraction.forString(a).add(Fraction.forString(b))).isEqualTo(Fraction.forString(c));
     }
 
+    @ParameterizedTest(name = "different denominators")
+    @CsvSource({ "2/3, 3/5, 19/15", "1/3, 1/2, 5/6" })
+    void differentDenominators(@ConvertWith(StringToFraction.class) Fraction a, Fraction b, Fraction c) {
+        assertThat(a.add(b)).isEqualTo(c);
+    }
+
+    static class StringToFraction implements ArgumentConverter {
+
+        @Override
+        public Object convert(Object source, ParameterContext parameterContext) throws ArgumentConversionException {
+            if (!(source instanceof String)) {
+                throw new IllegalArgumentException("The argument should be a string: " + source);
+            }
+            return Fraction.forString((String) source);
+        }
+    }
 }

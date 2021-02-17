@@ -61,7 +61,7 @@ public class Fraction {
         } else if (other == ZERO) {
             return this;
         }
-        return Fraction.fraction(numerator + (other.numerator * (denominator / other.denominator)), denominator);
+        return fraction(numerator * other.denominator + other.numerator * denominator, denominator * other.denominator);
     }
 
     public Fraction add(int integer) {
@@ -102,7 +102,7 @@ public class Fraction {
         if (this == ZERO) {
             return ZERO;
         }
-        int gcd = abs(greatestCommonDenominator(numerator, denominator));
+        int gcd = abs(greatestCommonDivisor(numerator, denominator));
         if (gcd == 1) {
             return this;
         }
@@ -118,8 +118,13 @@ public class Fraction {
         return String.format("%d/%d", fraction.numerator, fraction.denominator);
     }
 
-    private int greatestCommonDenominator(int numberA, int numberB) {
-        return numberB == 0 ? numberA : greatestCommonDenominator(numberB, numberA % numberB);
+    private int greatestCommonDivisor(int numberA, int numberB) {
+        while (numberB != 0) {
+            int temp = numberB;
+            numberB = numberA % numberB;
+            numberA = temp;
+        }
+        return abs(numberA);
     }
 
     @Override
