@@ -98,7 +98,7 @@ public class Fraction {
         return divide(Fraction.forInteger(number));
     }
 
-    public Fraction simplify() {
+    public Fraction reduce() {
         if (this == ZERO) {
             return ZERO;
         }
@@ -114,7 +114,7 @@ public class Fraction {
         if (numerator == 0) {
             return ZERO_AS_STRING;
         }
-        Fraction fraction = simplify();
+        Fraction fraction = reduce();
         return String.format("%d/%d", fraction.numerator, fraction.denominator);
     }
 
@@ -133,14 +133,14 @@ public class Fraction {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        Fraction fraction = ((Fraction) o).simplify();
-        Fraction thisSimplified = simplify();
-        return thisSimplified.numerator == fraction.numerator && thisSimplified.denominator == fraction.denominator;
+        Fraction fraction = ((Fraction) o).reduce();
+        Fraction thisReduced = reduce();
+        return thisReduced.numerator == fraction.numerator && thisReduced.denominator == fraction.denominator;
     }
 
     @Override
     public int hashCode() {
-        final Fraction simplified = simplify();
-        return Objects.hash(simplified.numerator, simplified.denominator);
+        final Fraction reduced = reduce();
+        return Objects.hash(reduced.numerator, reduced.denominator);
     }
 }

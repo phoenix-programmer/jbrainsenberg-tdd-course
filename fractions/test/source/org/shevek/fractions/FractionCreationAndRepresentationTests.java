@@ -86,6 +86,6 @@ public class FractionCreationAndRepresentationTests {
     @DisplayName("Unsimplifyable fraction should yield same fraction when tried to simplify")
     void unsimplifyableFractionShouldYieldSameFractionWhenTriedToSimplify() {
         final Fraction fraction = fraction(1, 3);
-        assertThat(fraction.simplify()).isSameAs(fraction);
+        assertThat(fraction.reduce()).isSameAs(fraction);
     }
 }
