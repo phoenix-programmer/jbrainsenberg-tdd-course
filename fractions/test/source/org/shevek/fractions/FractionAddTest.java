@@ -52,14 +52,15 @@ class FractionAddTest {
         assertThat(a.add(b)).isEqualTo(c);
     }
 
-    static class StringToFraction implements ArgumentConverter {
+    static class StringToFraction extends TypedArgumentConverter<String, Fraction> {
+
+        protected StringToFraction() {
+            super(String.class, Fraction.class);
+        }
 
         @Override
-        public Object convert(Object source, ParameterContext parameterContext) throws ArgumentConversionException {
-            if (!(source instanceof String)) {
-                throw new IllegalArgumentException("The argument should be a string: " + source);
-            }
-            return Fraction.forString((String) source);
+        protected Fraction convert(String source) throws ArgumentConversionException {
+            return Fraction.forString(source);
         }
     }
 }
