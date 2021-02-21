@@ -1,4 +1,4 @@
-package org.shevek.fractions;
+package org.shevek.math.fractions;
 
 import java.util.*;
 
@@ -46,13 +46,13 @@ public class Fraction {
         if (parts.length == 2) {
             return new Fraction(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
         } else if (parts.length == 1) {
-            return Fraction.forInteger(Integer.parseInt(parts[0]));
+            return forInteger(Integer.parseInt(parts[0]));
         }
         throw new IllegalArgumentException();
     }
 
     public Fraction negated() {
-        return Fraction.fraction(-1 * numerator, denominator);
+        return fraction(-1 * numerator, denominator);
     }
 
     public Fraction add(Fraction other) {
@@ -65,7 +65,7 @@ public class Fraction {
     }
 
     public Fraction add(int integer) {
-        return add(Fraction.forInteger(integer));
+        return add(forInteger(integer));
     }
 
     public Fraction subtract(Fraction fraction) {
@@ -73,29 +73,29 @@ public class Fraction {
     }
 
     public Fraction subtract(int number) {
-        return subtract(Fraction.forInteger(number));
+        return subtract(forInteger(number));
     }
 
     public Fraction multiply(Fraction fraction) {
-        return Fraction.fraction(numerator * fraction.numerator, denominator * fraction.denominator);
+        return fraction(numerator * fraction.numerator, denominator * fraction.denominator);
     }
 
     public Fraction multiply(int number) {
-        return multiply(Fraction.forInteger(number));
+        return multiply(forInteger(number));
     }
 
     public Fraction divide(Fraction fraction) {
         if (fraction == ZERO) {
             throw new IllegalArgumentException("Division by zero is not allowed");
         }
-        return Fraction.fraction(numerator * fraction.denominator, denominator * fraction.numerator);
+        return fraction(numerator * fraction.denominator, denominator * fraction.numerator);
     }
 
     public Fraction divide(int number) {
         if (number == 1) {
             return this;
         }
-        return divide(Fraction.forInteger(number));
+        return divide(forInteger(number));
     }
 
     public Fraction reduce() {

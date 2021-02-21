@@ -1,9 +1,9 @@
-package org.shevek.fractions;
+package org.shevek.math.fractions;
 
 import org.junit.jupiter.api.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.shevek.fractions.Fraction.*;
+import static org.shevek.math.fractions.Fraction.*;
 
 public class FractionSubtractTests {
 

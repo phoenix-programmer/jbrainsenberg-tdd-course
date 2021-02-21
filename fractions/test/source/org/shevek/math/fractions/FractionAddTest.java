@@ -1,4 +1,4 @@
-package org.shevek.fractions;
+package org.shevek.math.fractions;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.*;
@@ -7,7 +7,7 @@ import org.junit.jupiter.params.converter.*;
 import org.junit.jupiter.params.provider.*;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.shevek.fractions.Fraction.*;
+import static org.shevek.math.fractions.Fraction.*;
 
 class FractionAddTest {
 
